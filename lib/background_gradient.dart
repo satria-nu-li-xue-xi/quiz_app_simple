@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app_simple/starting_screen.dart';
 
 const alignmentStart = Alignment.topRight;
 const alignmentEnd = Alignment.bottomLeft;
 
 class BackgroundContainer extends StatelessWidget {
-  const BackgroundContainer(this.color1, this.color2, {super.key});
+  const BackgroundContainer(this.color1, this.color2, {super.key, required this.child});
 
   final Color color1;
   final Color color2;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class BackgroundContainer extends StatelessWidget {
         ),
       ),
       child: Center(
-        child: StartingScreen(),
+        child: child,
       ),
     );
   }

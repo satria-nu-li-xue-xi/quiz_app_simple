@@ -1,60 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app_simple/background_gradient.dart';
 import 'package:flutter_svg/svg.dart';
 
-class StartingScreen extends StatefulWidget {
-  const StartingScreen({super.key});
+class StartingScreen extends StatelessWidget {
+  const StartingScreen(this.startQuiz,{super.key});
+
+  final void Function() startQuiz;
 
   @override
-  State<StartingScreen> createState() {
-    return _StartingScreenState();
-  }
-}
-
-class _StartingScreenState extends State<StartingScreen> {
-  void startQuiz() {
-    setState(() {
-
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text(
-          'Guess the Answer',
-          style: TextStyle(
-            fontSize: 36,
-            fontWeight: FontWeight.w900,
-            color: Color(0xFF3761B2),
-            shadows: [
-              Shadow(
-                color: Color(0xFF3761B2).withValues(alpha: 0.6),
-                offset: Offset(0, 2),
-                blurRadius: 1,
-              ),
-            ],
+    return BackgroundContainer(
+      Color(0xFF51A5DA),
+      Color(0xFF0C7BC8),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Guess the Answer',
+            style: TextStyle(
+              fontSize: 36,
+              fontWeight: FontWeight.w900,
+              color: Color(0xFF3761B2),
+              shadows: [
+                Shadow(
+                  color: Color(0xFF3761B2).withValues(alpha: 0.6),
+                  offset: Offset(0, 2),
+                  blurRadius: 1,
+                ),
+              ],
+            ),
           ),
-        ),
-        const SizedBox(
+          const SizedBox(
             height: 18,
-        ),
-        Material(
-          elevation: 6,
-          shadowColor: Colors.blue.withValues(alpha: 0.6),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(2000000000000),
           ),
-          child: SvgPicture.asset(
-            'assets/img/quiz-logo.svg',
-            width: 180,
+          Material(
+            elevation: 6,
+            shadowColor: Colors.blue.withValues(alpha: 0.6),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(2000000000000),
+            ),
+            child: SvgPicture.asset(
+              'assets/img/quiz-logo.svg',
+              width: 180,
+            ),
           ),
-        ),
-        const SizedBox(
-          height: 36,
-        ),
-        ElevatedButton(
+          const SizedBox(
+            height: 36,
+          ),
+          ElevatedButton.icon(
             onPressed: startQuiz,
             style: ElevatedButton.styleFrom(
               elevation: 6,
@@ -66,9 +60,11 @@ class _StartingScreenState extends State<StartingScreen> {
               ),
               padding: const EdgeInsets.all(16),
             ),
-            child: const Text('Start Quiz'),
-        ),
-      ],
+            icon: Icon(Icons.play_arrow),
+            label: const Text('Start Quiz'),
+          ),
+        ],
+      ),
     );
   }
 }

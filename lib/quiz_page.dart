@@ -12,10 +12,17 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  var currentQuestionIndex = 0;
+
+  void answerQuestion() {
+    setState(() {
+      currentQuestionIndex++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final currentQuestion = questions[0];
+    final currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(
       width: double.infinity,
@@ -38,7 +45,7 @@ class _QuizPageState extends State<QuizPage> {
               (answers) {
                 return AnswerButton(
                     answerText: answers,
-                    onTap: () {}
+                    onTap: answerQuestion,
                 );
               }
             ),

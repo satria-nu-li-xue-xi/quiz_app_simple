@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app_simple/background_gradient.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -18,7 +19,7 @@ class StartingScreen extends StatelessWidget {
         children: [
           Text(
             'Guess the Answer',
-            style: TextStyle(
+            style: GoogleFonts.lato(
               fontSize: 36,
               fontWeight: FontWeight.w900,
               color: Color(0xFF3761B2),

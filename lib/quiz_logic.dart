@@ -12,6 +12,7 @@ class QuizLogic extends StatefulWidget {
 }
 
 class _QuizLogicState extends State<QuizLogic> {
+  final List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
   
   void switchScreen() {
@@ -20,12 +21,17 @@ class _QuizLogicState extends State<QuizLogic> {
     });
   }
 
+  void chosenAnswer(String answer) {
+    selectedAnswers.add(answer);
+  }
+
   @override
   Widget build(BuildContext context){
     Widget screenWidget = StartingScreen(switchScreen);
 
     if (activeScreen == 'quiz-page') {
-      screenWidget = const QuizPage();
+      screenWidget = QuizPage(
+          onSelectAnswer: chosenAnswer);
     }
 
     return MaterialApp(
